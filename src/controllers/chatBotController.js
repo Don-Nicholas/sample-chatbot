@@ -153,7 +153,7 @@ function handleMessage(sender_psid, message) {
   let entityChosen = "";
 
   entitiesArr.forEach((name) => {
-    let entity = firstTrait(message.nlp, name);
+    let entity = firstEntity(message.nlp, name);
     // if(entity && entity.confidence > 0.8) {
     //   callSendAPI(sender_psid, entity+', '+name);
     //   entityChosen = name;
