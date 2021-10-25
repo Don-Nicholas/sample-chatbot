@@ -161,6 +161,7 @@ function handleMessage(sender_psid, message) {
 
   if(entityChosen === "") {
     // default
+    callSendAPI(sender_psid, 'Bot bot is ongoing for development!');
   }
   else {
     if(entityChosen === "greetings") {
