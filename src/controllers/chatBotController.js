@@ -109,7 +109,7 @@ function callSendAPI(sender_psid, response) {
     }, (err, res, body) => {
       if (!err) {
         console.log('message sent!');
-        console.log('my message sent ${response}. (bot bot)')
+        console.log("my message sent."+response+" (bot bot)");
       } else {
         console.error("Unable to send message:" + err);
       }
