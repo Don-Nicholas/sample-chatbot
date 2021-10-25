@@ -149,14 +149,44 @@ function firstTrait(nlp, name) {
 }
 
 function handleMessage(sender_psid, message) {
-  // check greeting is here and is confident
-  const greeting = firstTrait(message.nlp, 'wit$greetings');
-  if (greeting && greeting.confidence > 0.8) {
-    callSendAPI(sender_psid, 'Hi there!');
-  } else { 
-    callSendAPI(sender_psid, 'Default!');
+  let entitiesArr = ['greetings', 'thanks', 'bye'];
+  let entityChosen = "";
+
+  entitiesArr.forEach((name) => {
+    let entity = firstEntity(message.nlp, name);
+    if(entity&& entity.confidence > 0.8) {
+      entityChosen = name;
+    }
+  });
+
+  if(entityChosen === "") {
+    // default
   }
-}
+  else {
+    if(entityChosen === "greetings") {
+      // send greetins message
+      callSendAPI(sender_psid, 'Hi there! This is bot bot.');
+    }
+
+    if(entityChosen === "thanks") {
+      callSendAPI(sender_psid, 'Thanks for believing bot bot!');
+    }
+
+    if(entityChosen === "bye") {
+      callSendAPI(sender_psid, 'Bye, bot bot is looking forward chatting you!');
+    }
+  }
+};
+
+// function handleMessage(sender_psid, message) {
+//   // check greeting is here and is confident
+//   const greeting = firstTrait(message.nlp, 'wit$greetings');
+//   if (greeting && greeting.confidence > 0.8) {
+//     callSendAPI(sender_psid, 'Hi there!');
+//   } else { 
+//     callSendAPI(sender_psid, 'Default!');
+//   }
+// }
 
 module.exports = {
     postWebhook : postWebhook,
