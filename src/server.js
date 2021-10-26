@@ -34,11 +34,23 @@ app.post('/webhook', (request, response) => {
 
     function welcome(agent) {
         agent.add(`Welcome to my agent!`);
-      }
+    }
+
+    function languageHandler(agent) {
+        const language = agent.parameters.language;
+        const programmingLanguage = agent.parameters['language-programming'];
+        if (language) {
+            agent.add(`From fulfillment: Wow! I didn't know you knew ${language}`);
+        } else if (programmingLanguage) {
+            agent.add(`From fulfillment: ${programmingLanguage} is cool`);
+        } else {
+            agent.add(`From fulfillment: What language do you know?`);
+        }
+    }
 
     let intents = new Map();
 
-    intents.set('Default Welcome Intent', welcome);
+    intents.set('Default Welcome Intent', languageHandler);
 
     _agent.handleRequest(intents);
 })
