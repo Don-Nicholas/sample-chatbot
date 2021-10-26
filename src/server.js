@@ -2,7 +2,7 @@ const express =  require('express');
 const viewEngine = require('./config/viewEngine');
 const initWebRoute = require('./routes/web');
 const bodyParser = require('body-parser');
-
+const dialogflow = require('dialogflow');
 require('dotenv').config();
 let app = express();
 
