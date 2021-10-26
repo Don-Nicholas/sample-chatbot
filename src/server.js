@@ -12,12 +12,6 @@ const dialogflow = require('dialogflow');
  
 viewEngine(app);
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
-
-initWebRoute(app);
-
-
 //use body-parser to post data
 app.use(bodyParser.json());
 app.use(express.json());
@@ -35,6 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 });
 
+initWebRoute(app);
 
 let port = process.env.PORT || 8080;
 
