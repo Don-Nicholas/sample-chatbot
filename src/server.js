@@ -33,7 +33,7 @@ app.post('/webhook', (request, response) => {
     const _agent = new WebhookClient({request, response});
 
     function welcome(agent) {
-        return agent.add(`Welcome to my agent!`);
+        agent.add(`Welcome to my agent!`);
       }
 
     let intents = new Map();
