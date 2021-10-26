@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
         console.log("json string is" + JSON.stringify(obj));
         response.send(JSON.stringify(obj));
 
-// });
+});
 
 // app.post('/webhook', (request, response) => {
 //     //Create an instance
