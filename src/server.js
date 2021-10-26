@@ -7,7 +7,7 @@ require('dotenv').config();
 let app = express();
 
 const { WebhookClient } = require('dialogflow-fulfillment');
-
+const dialogflow = require('dialogflow');
 
  
 viewEngine(app);
@@ -18,18 +18,21 @@ app.use(bodyParser.urlencoded({extended:true}));
 initWebRoute(app);
 
 
-app.post('/webhook', (req, res) => {
-     //Create an instance
-    const agent = new WebhookClient({request: request, response: response});
+//use body-parser to post data
+app.use(bodyParser.json());
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-    const Welcome = () => {
-        agent.add("Welcome to my agent!");
-    };
 
-    let intents = new Map();
-    agent.handleRequest(intents);
+        //this code will get the intent triggered in dialogflow through json
+        app.post("/webhook", function(request, response) {
+        // let _agent = new WebhookClient({request,response});
+        //const fulfillment = request.body.queryResult.fulfillmentText;
+        const fulfillment = request.body.queryResult.fulfillmentMessages[0].text.text[0];
+        const obj = {fulfillment};
+        console.log("json string is" + JSON.stringify(obj));
+        response.send(JSON.stringify(obj));
 
-    intents.set("Default welcome intent ", Welcome);    
 });
 
 
