@@ -38,7 +38,7 @@ app.post('/webhook', (request, response) => {
 
     let intents = new Map();
 
-    intents.set('Default Welcome Intent', Welcome);
+    intents.set('sample', Welcome);
     console.log("intents are "+intents);
     agent.handleRequest(intents);
 })
