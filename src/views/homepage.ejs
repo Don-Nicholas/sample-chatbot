@@ -8,11 +8,18 @@
 </head>
 <body>
     <h1>Hello World ejs file</h1>
-    <!-- Messenger Chat Plugin Code -->
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+  <df-messenger
+    intent="WELCOME"
+    chat-title="Irene"
+    agent-id="cf865ac0-5022-4d97-bad2-8284c7079eb4"
+    language-code="en"
+  ></df-messenger>
+    <!-- Messenger Chat Plugin Code
     <div id="fb-root"></div>
 
-    <!-- Your Chat Plugin code -->
-    <div id="fb-customer-chat" class="fb-customerchat">
+    Your Chat Plugin code -->
+    <!--<div id="fb-customer-chat" class="fb-customerchat">
     </div>
 
     <script>
@@ -34,6 +41,6 @@
         js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
-    </script>
+    </script>-->
 </body>
 </html>
