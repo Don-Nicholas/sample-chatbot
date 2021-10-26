@@ -30,9 +30,9 @@ app.use(express.json());
 // });
 
 app.post('/webhook', (request, response) => {
-    const agent = new WebhookClient({request:request,response:response});
+    const _agent = new WebhookClient({request:request,response:response});
 
-    function Welcome() {
+    function Welcome(agent) {
         return agent.add('Welcome to my Agent!');
     }
 
@@ -40,7 +40,7 @@ app.post('/webhook', (request, response) => {
 
     intents.set('sample', Welcome);
     console.log("intents are "+intents);
-    agent.handleRequest(intents);
+    _agent.handleRequest(intents);
 })
 
 initWebRoute(app);
