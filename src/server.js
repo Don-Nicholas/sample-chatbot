@@ -14,7 +14,7 @@ viewEngine(app);
 //use body-parser to post data
 app.use(bodyParser.json());
 app.use(express.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 //         //this code will get the intent triggered in dialogflow through json
@@ -30,7 +30,7 @@ app.use(express.json());
 
 app.post('/webhook', (request, response) => {
     //Create an instance
-    const _agent = new WebhookClient({request: request, response: response});
+    const _agent = new WebhookClient({request, response});
 
     function welcome(agent) {
         return agent.add(`Welcome to my agent!`);
