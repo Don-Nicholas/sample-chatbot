@@ -6,9 +6,6 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 let app = express();
 
-const { WebhookClient } = require('dialogflow-fulfillment');
-const dialogflow = require('dialogflow');
-
  
 viewEngine(app);
 
@@ -29,17 +26,21 @@ app.use(express.json());
 
 // });
 
-app.post('/webhook', (request, response) => {
-    const _agent = new WebhookClient({request:request,response:response});
+// Import the appropriate class
+const { WebhookClient } = require('dialogflow-fulfillment');
 
-    function Welcome(agent) {
-        return agent.add('Welcome to my Agent!');
-    }
+app.post('/webhook', (request, response) => {
+    //Create an instance
+    const _agent = new WebhookClient({request: request, response: response});
+
+    function welcome(agent) {
+        agent.add(`Welcome to my agent!`);
+      }
 
     let intents = new Map();
 
-    intents.set('sample', Welcome);
-    console.log("intents are "+intents);
+    intents.set('sample', welcome);
+    
     _agent.handleRequest(intents);
 })
 
