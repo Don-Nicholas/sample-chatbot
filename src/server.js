@@ -3,6 +3,8 @@ const viewEngine = require('./config/viewEngine');
 const initWebRoute = require('./routes/web');
 const bodyParser = require('body-parser');
 const dialogflow = require('dialogflow');
+// Import the appropriate class
+const { WebhookClient } = require('dialogflow-fulfillment');
 require('dotenv').config();
 let app = express();
 
@@ -25,9 +27,6 @@ app.use(express.json());
 //         response.send(JSON.stringify(obj));
 
 // });
-
-// Import the appropriate class
-const { WebhookClient } = require('dialogflow-fulfillment');
 
 app.post('/webhook', (request, response) => {
     //Create an instance
