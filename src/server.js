@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
         const obj = {fulfillment};
         console.log("json string is" + JSON.stringify(obj));
         response.send(JSON.stringify(obj));
-
+        
 });
 
 initWebRoute(app);
